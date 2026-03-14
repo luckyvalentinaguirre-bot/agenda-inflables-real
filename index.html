@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reservas Inflables 3 Soles</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Fredoka',sans-serif;
+background:linear-gradient(135deg,#ffecd2,#fcb69f);
+margin:0;
+padding:30px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1{
+text-align:center;
+color:#ff6a00;
+}
+
+.info{
+text-align:center;
+margin-bottom:20px;
+}
+
+.row{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.col{
+flex:1;
+min-width:320px;
+}
+
+.card{
+background:#fff8f0;
+padding:18px;
+border-radius:12px;
+margin-bottom:18px;
+border:2px solid #ffe0c7;
+}
+
+label{
+font-weight:500;
+display:block;
+margin-top:12px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+button{
+margin-top:20px;
+width:100%;
+padding:14px;
+font-size:18px;
+background:#25D366;
+border:none;
+color:white;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.games{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.game{
+background:#fff;
+padding:10px;
+border-radius:8px;
+border:1px solid #ffd9b8;
+text-align:center;
+}
+
+.price-grid{
+display:flex;
+gap:10px;
+}
+
+.price-card{
+flex:1;
+background:#fff;
+border-radius:10px;
+padding:12px;
+border:2px solid #ffd9b8;
+}
+
+.price-card h4{
+margin-top:0;
+color:#ff6a00;
+}
+
+.total{
+margin-top:15px;
+font-size:20px;
+font-weight:600;
+color:#ff6a00;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>☀️ Reservas Inflables 3 Soles</h1>
+
+<div class="info">
+<p><b>📞 Número: 092418972</b></p>
+<p>🔌 Se solicita que tengan alargue para enchufar los inflables</p>
+</div>
+
+<div class="row">
+
+<div class="col">
+
+<div class="card">
+
+<label>Fecha</label>
+<input type="date" id="fecha">
+
+<label>Servicio solicitado</label>
+
+<select id="servicio">
+<option value="">Seleccionar</option>
+
+<option value="1-2">1 juego 2 horas</option>
+<option value="2-2">2 juegos 2 horas</option>
+<option value="3-2">3 juegos 2 horas</option>
+<option value="4-2">4 juegos 2 horas</option>
+<option value="5-2">5 juegos 2 horas</option>
+<option value="6-2">6 juegos 2 horas</option>
+
+<option value="1-3">1 juego 3 horas</option>
+<option value="2-3">2 juegos 3 horas</option>
+<option value="3-3">3 juegos 3 horas</option>
+<option value="4-3">4 juegos 3 horas</option>
+<option value="5-3">5 juegos 3 horas</option>
+<option value="6-3">6 juegos 3 horas</option>
+
+<option value="1-4">1 juego 4 horas</option>
+<option value="2-4">2 juegos 4 horas</option>
+<option value="3-4">3 juegos 4 horas</option>
+<option value="4-4">4 juegos 4 horas</option>
+<option value="5-4">5 juegos 4 horas</option>
+<option value="6-4">6 juegos 4 horas</option>
+
+<option value="0">Ningún juego</option>
+</select>
+
+<div id="juegos"></div>
+
+<label>Ubicación</label>
+<input type="text" id="ubicacion" placeholder="Ej: Pando">
+
+<label>Hora</label>
+<input type="text" id="hora" placeholder="Ej: 18 a 21">
+
+<label>Link Google Maps</label>
+<input type="text" id="mapa" placeholder="Ej: https://maps.app.goo.gl/...">
+
+<label>Algodón de azúcar</label>
+
+<select id="algodon">
+<option value="no">No</option>
+<option value="si">Sí</option>
+</select>
+
+<div id="algodonDuracion" style="display:none">
+
+<label>Duración</label>
+
+<select id="duracionAlgodon">
+<option value="">Seleccionar</option>
+<option value="650">Media hora $650</option>
+<option value="1250">1 hora $1250</option>
+<option value="0">Más tiempo consultar</option>
+</select>
+
+</div>
+
+<label>Bolsitas de pop</label>
+
+<select id="pop">
+<option value="no">No</option>
+<option value="si">Sí</option>
+</select>
+
+<div id="popMsg"></div>
+
+<div class="total">
+Precio actual: $<span id="precio">0</span>
+</div>
+
+<button onclick="enviar()">Enviar por WhatsApp</button>
+
+</div>
+</div>
+<div class="col">
+
+<div class="card">
+
+<h3>📍 Lugares que llegamos</h3>
+
+<ul>
+<li>Toledo</li>
+<li>Suárez</li>
+<li>Pando</li>
+<li>Casarino</li>
+<li>Ciudad de la Costa</li>
+<li>Salinas</li>
+<li>Neptunia</li>
+<li>Alrededores</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>🎮 Juegos disponibles</h3>
+
+<div class="games">
+<div class="game">Inflable</div>
+<div class="game">Cama elástica</div>
+<div class="game">Ping pong</div>
+<div class="game">Futbolito</div>
+<div class="game">Tejo</div>
+<div class="game">Pool</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>💰 Lista de precios</h3>
+
+<div class="price-grid">
+
+<div class="price-card">
+<h4>2 horas</h4>
+1 juego $1000<br>
+2 juegos $1500<br>
+3 juegos $2500<br>
+4 juegos $3000<br>
+5 juegos $4000<br>
+6 juegos $4500
+</div>
+
+<div class="price-card">
+<h4>3 horas</h4>
+1 juego $1000<br>
+2 juegos $1500<br>
+3 juegos $2500<br>
+4 juegos $3000<br>
+5 juegos $4000<br>
+6 juegos $4500
+</div>
+
+<div class="price-card">
+<h4>4 horas</h4>
+1 juego $1300<br>
+2 juegos $1800<br>
+3 juegos $2800<br>
+4 juegos $3300<br>
+5 juegos $4300<br>
+6 juegos $4800
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let juegosLista=["Inflable","Cama elástica","Ping pong","Futbolito","Tejo","Pool"]
+
+let servicio=document.getElementById("servicio")
+let juegosDiv=document.getElementById("juegos")
+
+servicio.onchange=function(){
+
+juegosDiv.innerHTML=""
+
+let valor=this.value
+if(valor==""||valor=="0") return
+
+let cantidad=parseInt(valor.split("-")[0])
+
+for(let i=1;i<=cantidad;i++){
+
+let label=document.createElement("label")
+label.innerText="Juego "+i
+
+let select=document.createElement("select")
+select.innerHTML="<option value=''>Seleccionar</option>"
+
+juegosLista.forEach(j=>{
+let opt=document.createElement("option")
+opt.value=j
+opt.innerText=j
+select.appendChild(opt)
+})
+
+select.onchange=function(){
+controlarJuegos()
+actualizarTotal()
+}
+
+juegosDiv.appendChild(label)
+juegosDiv.appendChild(select)
+
+}
+
+actualizarTotal()
+
+}
+
+function controlarJuegos(){
+
+let selects=juegosDiv.querySelectorAll("select")
+let conteo={}
+
+selects.forEach(s=>{
+if(s.value!=""){
+conteo[s.value]=(conteo[s.value]||0)+1
+}
+})
+
+selects.forEach(s=>{
+
+Array.from(s.options).forEach(o=>{
+
+if(o.value=="") return
+
+if(o.value=="Inflable"||o.value=="Cama elástica"){
+
+if(conteo[o.value]>=2 && s.value!=o.value){
+o.disabled=true
+}else{
+o.disabled=false
+}
+
+}else{
+
+if(conteo[o.value]>=1 && s.value!=o.value){
+o.disabled=true
+}else{
+o.disabled=false
+}
+
+}
+
+})
+
+})
+
+}
+
+function actualizarTotal(){
+
+let precio=0
+let valor=servicio.value
+
+let selects=juegosDiv.querySelectorAll("select")
+let conteo={}
+
+selects.forEach(s=>{
+if(s.value!=""){
+conteo[s.value]=(conteo[s.value]||0)+1
+}
+})
+
+let rompePromo=false
+
+if(conteo["Inflable"]>=2 || conteo["Cama elástica"]>=2){
+rompePromo=true
+}
+
+if(valor!="" && valor!="0"){
+
+let partes=valor.split("-")
+let juegos=parseInt(partes[0])
+let horas=parseInt(partes[1])
+
+let tabla={
+2:{1:1000,2:1500,3:2500,4:3000,5:4000,6:4500},
+3:{1:1000,2:1500,3:2500,4:3000,5:4000,6:4500},
+4:{1:1300,2:1800,3:2800,4:3300,5:4300,6:4800}
+}
+
+if(rompePromo){
+precio=juegos*1000
+}else{
+precio+=tabla[horas][juegos]
+}
+
+}
+
+let algodon=document.getElementById("algodon").value
+let duracion=document.getElementById("duracionAlgodon").value
+
+if(algodon=="si"){
+precio+=parseInt(duracion)||0
+}
+
+let pop=document.getElementById("pop").value
+
+if(pop=="si"){
+precio+=300
+}
+
+document.getElementById("precio").innerText=precio
+
+}
+
+document.getElementById("algodon").onchange=function(){
+
+if(this.value=="si"){
+document.getElementById("algodonDuracion").style.display="block"
+}else{
+document.getElementById("algodonDuracion").style.display="none"
+}
+
+actualizarTotal()
+
+}
+
+document.getElementById("duracionAlgodon").onchange=actualizarTotal
+
+document.getElementById("pop").onchange=function(){
+
+let msg=document.getElementById("popMsg")
+
+if(this.value=="si"){
+msg.innerText="20 bolsitas $300"
+}else{
+msg.innerText=""
+}
+
+actualizarTotal()
+
+}
+
+function enviar(){
+
+if(!document.getElementById("fecha").value ||
+   !document.getElementById("servicio").value ||
+   !document.getElementById("ubicacion").value ||
+   !document.getElementById("hora").value ||
+   !document.getElementById("mapa").value){
+
+alert("Por favor completa todos los campos antes de enviar")
+return
+}
+
+let selects=juegosDiv.querySelectorAll("select")
+
+for(let s of selects){
+if(s.value==""){
+alert("Debes seleccionar todos los juegos")
+return
+}
+}
+
+let mensaje="Reserva Inflables 3 Soles\n\n"
+
+let fecha=document.getElementById("fecha").value
+let servicioTexto=servicio.options[servicio.selectedIndex].text
+let ubicacion=document.getElementById("ubicacion").value
+let hora=document.getElementById("hora").value
+let mapa=document.getElementById("mapa").value
+
+mensaje+="Fecha: "+fecha+"\n"
+mensaje+="Servicio: "+servicioTexto+"\n\n"
+
+selects.forEach((s,i)=>{
+mensaje+="Juego "+(i+1)+": "+s.value+"\n"
+})
+
+mensaje+="\nUbicación: "+ubicacion+"\n"
+mensaje+="Hora: "+hora+"\n"
+mensaje+="Mapa: "+mapa+"\n"
+
+let algodon=document.getElementById("algodon").value
+
+if(algodon=="si"){
+mensaje+="\nAlgodón de azúcar: Sí\n"
+
+let duracion=document.getElementById("duracionAlgodon").value
+
+if(duracion=="650") mensaje+="Duración: Media hora\n"
+if(duracion=="1250") mensaje+="Duración: 1 hora\n"
+if(duracion=="0") mensaje+="Duración: Más tiempo consultar\n"
+
+}else{
+mensaje+="\nAlgodón de azúcar: No\n"
+}
+
+let pop=document.getElementById("pop").value
+
+if(pop=="si"){
+mensaje+="Bolsitas de pop: 20 ($300)\n"
+}else{
+mensaje+="Bolsitas de pop: No\n"
+}
+
+mensaje+="\nPrecio final: $"+document.getElementById("precio").innerText
+
+let url="https://wa.me/59892418972?text="+encodeURIComponent(mensaje)
+
+window.open(url)
+
+}
+
+</script>
+
+</body>
+</html>
